@@ -12,7 +12,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllByCostBetween(Integer min, Integer max);
 
     @Query("select p from Product p where p.id = :id")
-    Optional<Product> findById(Long id);   /////////////////////
+    Optional<Product> findById(Long id);
 
     @Query("select p from Product p where p.title = :title")
     Optional<Product> findProductByTitle(String title);
