@@ -23,6 +23,10 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
+    public void addProduct(String title, int cost) {
+        productRepository.save(new Product(title, cost));
+    }
+
     public Product findById(Long id) {
         return productRepository.findById(id).orElseThrow();
     }
@@ -42,4 +46,5 @@ public class ProductService {
     public List<Product> findCostMoreThan(Integer min) {
         return productRepository.findCostMoreThan(min);
     }
+
 }
