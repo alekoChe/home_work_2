@@ -43,7 +43,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/deleteById")
-    public void deleteProductById(@RequestParam Long id) { productService.deleteById(id);}
+    public void deleteProductById(@PathVariable Long id) { productService.deleteById(id);}
 
 //    @PostMapping("/products/add")
 //    public void addProduct(@RequestParam String title, @RequestParam int cost) {

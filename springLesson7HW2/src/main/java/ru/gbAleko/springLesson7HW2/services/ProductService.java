@@ -42,17 +42,14 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-//    public void addProduct(String title, int cost) {
-//        productRepository.save(new Product(title, cost));
-//    }
-public ResponseEntity<?> addProduct(Product product) {
-    if(productRepository.existsProductByTitle(product.getTitle())){
-        return new ResponseEntity<>(new AppError(HttpStatus.CONFLICT.value(), "Product is already"), HttpStatus.CONFLICT);
-    } else {
-        productRepository.save(product);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<?> addProduct(Product product) {
+        if(productRepository.existsProductByTitle(product.getTitle())){
+            return new ResponseEntity<>(new AppError(HttpStatus.CONFLICT.value(), "Product is already"), HttpStatus.CONFLICT);
+        } else {
+            productRepository.save(product);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
     }
-}
 
     public Product findById(Long id) {
         return productRepository.findById(id).orElseThrow();

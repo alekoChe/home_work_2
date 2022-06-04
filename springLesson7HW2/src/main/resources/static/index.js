@@ -41,27 +41,19 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
                     $scope.loadStudents();
                 });
     }
-    $scope.deleteProduct = function () {
-            console.log($scope.deleteProductId)
-            $http.get(contextPath + '/products/delete/', $scope.deleteProductId)
-                .then(function (response) {
-                    $scope.loadStudents();
-                });
-    }
 
-//    $scope.deleteProduct = function (productId) {
-//            console.log($scope.deleteProductById)
-//            $http({
-//                url: contextPath + "/products/deleteById", ///////////////////////
-//                method: 'get',
-//                params: {
-//                    productId: $scope.deleteProductById.productId
-//                }
-//            }).then(function (response){
-//                $scope.loadProducts();  // выведет весь список
-//                //$scope.productList = response.data;
-//            });
-//    }
+    $scope.deleteProduct = function (productId) {
+            console.log($scope.deleteProductById)
+            $http({
+                url: contextPath + "/products/deleteById",
+                method: 'get',
+                params: {
+                    productId: $scope.deleteProductById.productId
+                }
+            }).then(function (response){
+                $scope.loadProducts();
+            });
+    }
 
     $scope.createProductJson = function (){
             console.log($scope.newProductJson);
